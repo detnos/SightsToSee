@@ -22,6 +22,7 @@ class App extends React.Component {
   }
 
   chooseRoute(e) {
+    console.log("in chooseRoute function")
     console.log(e.target.id);
     if (e.target.id === '1') {
       this.setState({ route4map : this.state.routes[0].maplink })
@@ -79,7 +80,7 @@ class App extends React.Component {
                   <Row>
                     <Col>
                       <div onClick={this.chooseRoute} >
-                        <RouteList routes={this.state.routes} />
+                        <RouteList routes={this.state.routes}/>
                       </div>
                     </Col>
                     <Col>
