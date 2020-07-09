@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  api:
+    build: backend/
+    depends_on:
+      - 'database'
+    volumes:
+      - './backend:/src/app'
+      - '/src/app/node_modules'
+
+    ports: 
+      - '3001:3001'
+
+  client:
+    build: frontend/sights-to-see
+    depends_on:
+      - 'database'
+      - 'api'
+    volumes:
+      - './frontend/sights-to-see:/web'
+      - '/web/node_modules'
+    ports:
+      - '3000:3000'
+    stdin_open: true
+
+  database:
+    build: database/
+    restart: always
+    environment:
+      POSTGRES_USER: me
+      POSTGRES_PASSWORD: password
+      

@@ -18,7 +18,7 @@ function RouteList(props) {
                             </Tooltip>
                         }
                     >
-                        <Button variant="primary" id={route.id}>Route {route.id} </Button> 
+                        <Button variant="outline-dark" id={route.id}>Route {route.id} </Button> 
                     </OverlayTrigger>
             )}
             </ButtonGroup>

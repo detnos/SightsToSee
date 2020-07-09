@@ -1,3 +1,6 @@
+* {
+  font-family: sans-serif;
+}
 
 .App {
   text-align: center;
@@ -5,9 +8,16 @@
 }
 
 .Carousel {
-  height: 500;
-  width: 500px;
+  width: 550px;
   text-align: left;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .App-logo {

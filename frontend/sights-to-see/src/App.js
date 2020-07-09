@@ -4,7 +4,7 @@ import RouteList from './listRoutes';
 import SightList from './listSights';
 import Map from './Map';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Accordion, Card, Button, Container, Row, Col } from 'react-bootstrap';
+import { Accordion, Button, Card, Container, Row, Col } from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -75,22 +75,22 @@ class App extends React.Component {
 
     return (
       <div className="App">  
-
         <Accordion defaultActiveKey="0">
-          <Card>
+          <Card bg="light">
             <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="0">
+              <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
                 Routes
               </Accordion.Toggle>
             </Card.Header>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
-                  <Container>
+                  <Container className="Card">
                     <Row>
                       <Col>
-                        <div onClick={this.chooseRoute} >
+                        <div className="Card" onClick={this.chooseRoute} >
                           <RouteList routes={this.state.routes} />
                         </div>
+                        <br />
                         <br />
                         <br />
                         <br />

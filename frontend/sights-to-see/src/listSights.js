@@ -11,7 +11,7 @@ function SightList(props) {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src="https://images.pexels.com/photos/8892/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                        src="https://images.freecreatives.com/wp-content/uploads/2016/02/Solid-Gray-Background-for-Free.jpg"
                         alt={`slide ${sight.id}`}
                     />
                     <Carousel.Caption>
