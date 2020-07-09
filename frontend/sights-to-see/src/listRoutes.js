@@ -7,7 +7,7 @@ function RouteList(props) {
     return (
 
         <React.Fragment>
-            <ButtonGroup aria-label="Basic example">
+            <ButtonGroup toggle aria-label="Basic example">
                 {props.routes.map((route, index) => 
                     <OverlayTrigger
                         key={placement[index]}
@@ -18,7 +18,7 @@ function RouteList(props) {
                             </Tooltip>
                         }
                     >
-                        <Button variant="secondary" id={route.id}>Route {route.id} </Button> 
+                        <Button variant="primary" id={route.id}>Route {route.id} </Button> 
                     </OverlayTrigger>
             )}
             </ButtonGroup>
