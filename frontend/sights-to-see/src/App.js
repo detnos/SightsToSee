@@ -4,7 +4,7 @@ import RouteList from './listRoutes';
 import SightList from './listSights';
 import Map from './Map';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Accordion, Button, Card, Container, Row, Col } from 'react-bootstrap';
+import { Accordion, Card, Container, Row, Col } from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -84,8 +84,8 @@ class App extends React.Component {
             </Card.Header>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
-                  <Container className="Card">
-                    <Row>
+                  <Container className="Card no-gutters">
+                    <Row className="no-gutters justify-content-between">
                       <Col>
                         <div className="Card" onClick={this.chooseRoute} >
                           <RouteList routes={this.state.routes} />
@@ -99,7 +99,7 @@ class App extends React.Component {
                           <SightList sights={this.state.currentSights} type="Sights" />
                         </div>
                       </Col>
-                      <Col>
+                      <Col className="no-gutters offset-sm-2">
                         <Map route={this.state.route4map} />
                       </Col>
                     </Row>

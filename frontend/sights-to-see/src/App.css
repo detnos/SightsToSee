@@ -8,7 +8,7 @@
 }
 
 .Carousel {
-  width: 550px;
+  width: 500px;
   text-align: left;
 }
 
@@ -53,4 +53,16 @@ a:hover {
   to {
     transform: rotate(360deg);
   }
+}
+
+.card-container {
+  margin: 15px;
+}
+
+.row {
+  padding: 0px;
+}
+
+.card-body {
+  padding: 0px;
 }
