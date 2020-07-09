@@ -10,18 +10,20 @@ services:
       - '/src/app/node_modules'
 
     ports: 
-      - '3001:3001'
+      - '3005:3005'
 
   client:
     build: frontend/sights-to-see
     depends_on:
       - 'database'
       - 'api'
+    environment:
+        PORT: 3004
     volumes:
       - './frontend/sights-to-see:/web'
       - '/web/node_modules'
     ports:
-      - '3000:3000'
+      - '3004:3004'
     stdin_open: true
 
   database:

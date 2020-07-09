@@ -10,7 +10,7 @@ let allowCrossDomain = function (req, res, next) {
 };
 app.use(allowCrossDomain);
 
-const port = 3001
+const port = 3005
 const db = require('./queries')
 
 app.use(bodyParser.json())

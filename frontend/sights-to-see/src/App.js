@@ -46,18 +46,18 @@ class App extends React.Component {
   }
 
   async fetchRoutes() {
-    await fetch(`http://localhost:3001/routes`)
+    await fetch(`http://localhost:3005/routes`)
       .then((response) => response.json())
       .then((json) => { this.setState({ routes: json }) })
   }
   async fetchLocations() {
-    await fetch(`http://localhost:3001/locations`)
+    await fetch(`http://localhost:3005/locations`)
       .then((response) => response.json())
       .then((json) => { this.setState({ locations: json }) })
   }
 
   async fetchSights() {
-    await fetch(`http://localhost:3001/sights`)
+    await fetch(`http://localhost:3005/sights`)
       .then((response) => response.json())
       .then((json) => { this.setState({ sights: json, currentSights: json }) })
   }
