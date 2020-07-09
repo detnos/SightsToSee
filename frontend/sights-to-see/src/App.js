@@ -13,6 +13,8 @@ class App extends React.Component {
       routes: [],
       locations: [],
       sights: [],
+      currentSights : [],
+      sightTitle : "All Sights",
       route4map : 'https://www.mapquest.com/embed/my-maps/2fd83602-cf58-4a04-93a9-e7f7f2ef99bb?center=44.70575417971902,-110.55953979492188&zoom=9&maptype=map'
     }
     this.fetchRoutes = this.fetchRoutes.bind(this)
@@ -23,15 +25,22 @@ class App extends React.Component {
 
   chooseRoute(e) {
     console.log("in chooseRoute function")
-    console.log(e.target.id);
+    console.log('id of the target: ', e.target.id);
+    let locationIds, routeSights;
     if (e.target.id === '1') {
-      this.setState({ route4map : this.state.routes[0].maplink })
+      locationIds = [this.state.routes[0].stop1, this.state.routes[0].stop2]
+      routeSights = this.state.sights.filter(sight => sight.location_id === locationIds[0] || sight.location_id === locationIds[1])
+      this.setState({ route4map : this.state.routes[0].maplink, currentSights : routeSights, sightTitle : "Sights for Route 1" })
     } else if (e.target.id === '2') {
-      this.setState({ route4map: this.state.routes[1].maplink })
+      locationIds = [this.state.routes[1].stop1, this.state.routes[1].stop2, this.state.routes[1].stop3]
+      routeSights = this.state.sights.filter(sight => sight.location_id === locationIds[0] || sight.location_id === locationIds[1] || sight.location_id === locationIds[2])
+      this.setState({ route4map: this.state.routes[1].maplink, currentSights: routeSights, sightTitle : "Sights for Route 2" })
     } else if (e.target.id === '3') {
-      this.setState({ route4map: this.state.routes[2].maplink })
+      locationIds = [this.state.routes[2].stop1, this.state.routes[2].stop2, this.state.routes[2].stop3, this.state.routes[2].stop4]
+      routeSights = this.state.sights.filter(sight => sight.location_id === locationIds[0] || sight.location_id === locationIds[1] || sight.location_id === locationIds[2] || sight.location_id === locationIds[3])
+      this.setState({ route4map: this.state.routes[2].maplink, currentSights: routeSights, sightTitle: "Sights for Route 3" })
     } else {
-      this.setState({ route4map: 'https://www.mapquest.com/embed/my-maps/2fd83602-cf58-4a04-93a9-e7f7f2ef99bb?center=44.70575417971902,-110.55953979492188&zoom=9&maptype=map' })
+      this.setState({ route4map: 'https://www.mapquest.com/embed/my-maps/2fd83602-cf58-4a04-93a9-e7f7f2ef99bb?center=44.70575417971902,-110.55953979492188&zoom=9&maptype=map', currentSights: this.state.sights, sightTitle: "All Sights" })
     }
 
   }
@@ -50,7 +59,7 @@ class App extends React.Component {
   async fetchSights() {
     await fetch(`http://localhost:3001/sights`)
       .then((response) => response.json())
-      .then((json) => { this.setState({ sights: json }) })
+      .then((json) => { this.setState({ sights: json, currentSights: json }) })
   }
 
   render() {
@@ -67,41 +76,36 @@ class App extends React.Component {
     return (
       <div className="App">  
 
-        <Accordion defaultActiveKey="2">
+        <Accordion defaultActiveKey="0">
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="0">
                 Routes
-      </Accordion.Toggle>
+              </Accordion.Toggle>
             </Card.Header>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>
-                <Container>
-                  <Row>
-                    <Col>
-                      <div onClick={this.chooseRoute} >
-                        <RouteList routes={this.state.routes}/>
-                      </div>
-                    </Col>
-                    <Col>
-                      <Map route={this.state.route4map} />
-                    </Col>
-                  </Row>
-                </Container>
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card>
-            <Card.Header>
-              <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                Sights
-      </Accordion.Toggle>
-            </Card.Header>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body>
-                <SightList sights={this.state.sights} type="Sights" />
-              </Card.Body>
-            </Accordion.Collapse>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body>
+                  <Container>
+                    <Row>
+                      <Col>
+                        <div onClick={this.chooseRoute} >
+                          <RouteList routes={this.state.routes} />
+                        </div>
+                        <br />
+                        <br />
+                        <br />
+                        <div>
+                          <h3>{this.state.sightTitle}</h3>
+                          <SightList sights={this.state.currentSights} type="Sights" />
+                        </div>
+                      </Col>
+                      <Col>
+                        <Map route={this.state.route4map} />
+                      </Col>
+                    </Row>
+                  </Container>
+                </Card.Body>
+              </Accordion.Collapse>
           </Card>
         </Accordion>
       </div>

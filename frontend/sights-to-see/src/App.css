@@ -4,6 +4,12 @@
   background-color: #8FBC8F;
 }
 
+.Carousel {
+  height: 500;
+  width: 500px;
+  text-align: left;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

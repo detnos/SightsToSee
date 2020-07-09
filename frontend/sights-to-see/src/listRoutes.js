@@ -14,7 +14,7 @@ function RouteList(props) {
                         placement={placement[index]}
                         overlay={
                             <Tooltip id={`tooltip-${placement[index]}`}>
-                                <RouteLine route={route} key={index} />
+                                <RouteLine key={index} route={route} />
                             </Tooltip>
                         }
                     >

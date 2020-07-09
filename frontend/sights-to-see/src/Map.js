@@ -10,7 +10,7 @@ console.log('props.route: ', props.route)
     return (
         <React.Fragment>
         <h3>Yellowstone National Park</h3>
-        <iframe title="Map" height="500" width="500" border="0" marginwidth="0" marginheight="0" src={props.route}></iframe>
+            <iframe title="Map" height="500" width="500" frameborder="0" border="0" marginwidth="0" marginheight="0" src={props.route}></iframe>
         </React.Fragment>
     )
 }
